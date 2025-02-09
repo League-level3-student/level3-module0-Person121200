@@ -6,6 +6,7 @@ import java.util.Random;
 public class _01_IntroToArrays {
     public static void main(String[] args) {
     	Random rand = new Random();
+    	int min = 0;
 
         // 1. declare and Initialize an array 5 Strings
     	String[] items=new String[5];
@@ -41,14 +42,24 @@ public class _01_IntroToArrays {
     	}
         // 9. without printing the entire array, print only the smallest number
         //    on the array
-    	for(int i = 0; i>integers[i]; i++) {
-    		
+    	for(int i =0; i<integers.length; i++) {
+    		if(integers[i]<min) {
+    			min = integers[i];
+    		}
+//    		System.out.println(integers[i]);
     	}
+//    	System.out.println(min);
+
         // 10 print the entire array to see if step 8 was correct
 
         // 11. print the largest number in the array.
-
+    	for(int i =0; i<integers.length; i++) {
+    		if(integers[i]>min) {
+    			min = integers[i];
+    		}
+    	}
+    	System.out.println(min);
         // 12. print only the last element in the array
-
+    	System.out.println(integers[49]);
     }
 }
