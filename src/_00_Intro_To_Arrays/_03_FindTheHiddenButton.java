@@ -9,16 +9,19 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
+import org.jointheleague.graphical.robot.Robot;
+
 /* Run the FindHiddenButton.jar to see the finished product. */
 
 public class _03_FindTheHiddenButton implements ActionListener{
     JFrame window;
     JPanel panel;
+    Random rand = new Random();
 
     // 1. create an array of JButtons. Don't initialize it yet.
-
+    JButton[] buttons;
     // 2. create an integer variable called hiddenButton
-
+    int hiddenButton;
     public static void main(String[] args) {
         new _03_FindTheHiddenButton().start();
     }
@@ -29,12 +32,31 @@ public class _03_FindTheHiddenButton implements ActionListener{
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         // 3. Ask the user to enter a positive number and convert it to an int
-
+        String positiveNumber = JOptionPane.showInputDialog("Enter a positive number: ");
+        int positiveInt = Integer.parseInt(positiveNumber);
         // 4. Initialize the array of JButtons to be the size of the int
         //    created in step 3
-
+        buttons = new JButton[positiveInt];
         // 5. Make a for loop to iterate through the JButton array
-        
+        for(int i = 0; i<buttons.length; i++) {
+        	buttons[i] = new JButton();
+        	buttons[i].addActionListener(this);
+        	panel.add(buttons[i]);
+
+        }
+    	window.add(panel);
+    	window.setExtendedState(JFrame.MAXIMIZED_BOTH);
+    	window.setVisible(true);
+    	JOptionPane.showMessageDialog(null, "How to play: Select the correct button to win.");
+    	hiddenButton = rand.nextInt(positiveInt);
+    	buttons[hiddenButton].setText("ME");
+    	try {
+			Thread.sleep(100);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    	buttons[hiddenButton].setText("");
             // 6. initialize each JButton in the array
         
             // 7. add the ActionListener to each JButton
@@ -65,7 +87,13 @@ public class _03_FindTheHiddenButton implements ActionListener{
         JButton buttonClicked = (JButton)e.getSource();
 
         // 17. if the hiddenButton is clicked, tell the user that they win.
-
+        if(buttons[hiddenButton] == buttonClicked) {
+        	JOptionPane.showMessageDialog(null, "You win!");
+        	window.dispose();
+        }
         // 18. else tell them to try again
+        else {
+        	JOptionPane.showMessageDialog(null, "Try again");
+        }
     }
 }
