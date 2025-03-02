@@ -14,9 +14,14 @@ public class _01_IntroTo2DArrays {
     	for(int i = 0; i<array2d.length; i++) {
     		for(int j = 0; j<array2d[i].length; j++) {
     			array2d[i][j] = rand.nextInt(100);
+    			
     		}
-    		System.out.println(array2d[1][2]);
+    		
     	}
+    	System.out.println(array2d[1][2]);
+    	array2d[1][2] = 3;
+    	System.out.println(array2d[1][2]);
+    		
         //    BE SURE TO USE THE ARRAY'S length VARIABLE
         
         // 3. print the third element from the second 1D array (2DArray[1][2])
