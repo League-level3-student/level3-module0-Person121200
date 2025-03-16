@@ -161,17 +161,30 @@ public class _02_2DArrayPractice {
 	 * Write an algorithm to return the sum of all the numbers in the specified row
 	 */
 	public Integer getSumByRow(int[][] matrix, int row) {
-
-		return null;
+		int value=0;
+		Integer sum = 0;
+		for(int i =0; i<matrix[row].length;i++) {
+			 sum = value+matrix[row][i];
+		}
+		return sum;
 	}
-
+//	    ( 
+//	  ( o o )
+//	(  -----  )
+// (  	      )
+//  ----------
+          
 	/*
 	 * Write an algorithm to return the sum of all the numbers in the specified
 	 * column
 	 */
 	public Integer getSumByColumn(int[][] matrix, int col) {
-
-		return null;
+		int value=0;
+		Integer sum = 0;
+		for(int i =0; i<matrix[col].length;i++) {
+			 sum = value+matrix[col][i];
+	}
+		return sum;
 	}
 
 	/*
@@ -189,22 +202,30 @@ public class _02_2DArrayPractice {
 	 * null.
 	 */
 	public Integer getEastNeighbor(int[][] matrix, int row, int col) {
-
-		return null;
+		if(col+1 >= matrix[row].length) {
+			return null;
+		}
+		return matrix[row][col+1];
 	}
 
 	public Integer getWestNeighbor(int[][] matrix, int row, int col) {
-
-		return null;
+		if(col-1 < 0) {
+			return null;
+		}
+		return matrix[row][col-1];
 	}
 
 	public Integer getNorthNeighbor(int[][] matrix, int row, int col) {
-
-		return null;
+		if(row-1 < 0) {
+			return null;
+		}
+		return matrix[row-1][col];
 	}
 
 	public Integer getSouthNeighbor(int[][] matrix, int row, int col) {
-
-		return null;
+		if(row+1 >= matrix[row].length) {
+			return null;
+		}
+		return matrix[row+1][col];
 	}
 }

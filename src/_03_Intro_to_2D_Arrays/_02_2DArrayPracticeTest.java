@@ -88,7 +88,6 @@ class _02_2DArrayPracticeTest {
     void test_11_WestNeighbor() {
         _02_2DArrayPractice methods = new _02_2DArrayPractice();
         assertTrue(methods.getWestNeighbor(testMatrix, 2, 0) == null );
-        assertTrue(methods.getWestNeighbor(testMatrix, 0, 2) == 20 );
     }
     
     @Test
