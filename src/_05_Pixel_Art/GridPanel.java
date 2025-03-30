@@ -26,8 +26,8 @@ public class GridPanel extends JPanel{
         this.rows = r;
         this.cols = c;
 
-        this.pixelWidth = windowWidth / cols;
-        this.pixelHeight = windowHeight / rows;
+        this.pixelWidth = windowWidth / rows;
+        this.pixelHeight = windowHeight / cols;
 
         color = Color.BLACK;
 
@@ -56,16 +56,18 @@ public class GridPanel extends JPanel{
     	if(mouseX > windowWidth) {
     		return;
     	}
-    	if(mouseX < windowWidth) {
+    	if(mouseX < 0) {
     		return;
     	}
-    	if(mouseY < windowHeight) {
+    	if(mouseY < 0) {
     		return;
     	}
     	if(mouseY > windowHeight) {
     		return;
     	}
-    	pixels[mouseX][mouseY].color = color;
+    	
+    	pixels[mouseX/pixelWidth][mouseY/pixelHeight].color = color;
+    	System.out.println("REPAINTING");
     	repaint();
 
 
@@ -78,7 +80,7 @@ public class GridPanel extends JPanel{
         for(int i = 0; i< pixels.length; i++) {
         	for(int j = 0; j<pixels[i].length; j++) {
         	    int cellSizeX = windowWidth/rows;
-        	    int cellSizeY = windowWidth/cols;
+        	    int cellSizeY = windowHeight/cols;
         		g.setColor(pixels[i][j].color);
         		g.fillRect(pixels[i][j].x*cellSizeX, pixels[i][j].y*cellSizeY, cellSizeX, cellSizeY);
         	    g.setColor(Color.BLACK);

@@ -17,9 +17,10 @@ public class WorldPanel extends JPanel implements MouseListener, ActionListener 
     private int cellSize;
 
     private Timer timer;
+    Random rand = new Random();
 
     // 1. Create a 2D array of Cells. Do not initialize it.
-
+    Cell[][] cells;
 
     public WorldPanel(int w, int h, int cpr) {
         setPreferredSize(new Dimension(w, h));
@@ -27,10 +28,16 @@ public class WorldPanel extends JPanel implements MouseListener, ActionListener 
         timer = new Timer(500, this);
         this.cellsPerRow = cpr;
 
-        // 2. Calculate the cell size.
+        // 2. Calculate the cell size. 
+        
+        cells = new Cell[w/cellsPerRow][h/cellsPerRow];
 
         // 3a. Initialize the cell array to the appropriate size.
-
+        for(int i = 0; i<cells.length; i++) {
+        	for(int j = 0; j<cells[i].length; j++) {
+        		cells = new Cell[i][j];
+        	}
+        }
         // 3b. Iterate through the array and initialize each cell.
         //    Don't forget to consider the cell's dimensions when 
         //    passing in the location.
@@ -40,12 +47,21 @@ public class WorldPanel extends JPanel implements MouseListener, ActionListener 
     public void randomizeCells() {
         // 4. Iterate through each cell and randomly set each
         //    cell's isAlive memeber to true or false
-
+        for(int i = 0; i<cells.length; i++) {
+        	for(int j = 0; j<cells[i].length; j++) {
+        		cells[i][j].isAlive = rand.nextBoolean();
+        	}
+        }
         repaint();
     }
 
     public void clearCells() {
         // 5. Iterate through the cells and set them all to dead.
+        for(int i = 0; i<cells.length; i++) {
+        	for(int j = 0; j<cells[i].length; j++) {
+        		cells[i][j].isAlive = false;
+        	}
+        }
 
         repaint();
     }
@@ -65,6 +81,11 @@ public class WorldPanel extends JPanel implements MouseListener, ActionListener 
     @Override
     public void paintComponent(Graphics g) {
         // 6. Iterate through the cells and draw them all
+        for(int i = 0; i<cells.length; i++) {
+        	for(int j = 0; j<cells[i].length; j++) {
+        		cells[i][j].draw(g);
+        	}
+        }
 
 
         // Draw the perimeter of the grid
@@ -76,9 +97,22 @@ public class WorldPanel extends JPanel implements MouseListener, ActionListener 
     public void step() {
         // 7. iterate through cells and fill in the livingNeighbors array
         //    using the getLivingNeighbors method.
+    	
         int[][] livingNeighbors = new int[cellsPerRow][cellsPerRow];
+        for(int i = 0; i<cells.length; i++) {
+        	for(int j = 0; j<cells[i].length; j++) {
+        		getLivingNeighbors(cells, i, j);
+        	}
+        }
 
         // 8. check if each cell should live or die
+        for(int i = 0; i<cells.length; i++) {
+        	for(int j = 0; j<cells[i].length; j++) {
+        		if(livingNeighbors[i][j] ) {
+        			
+        		}
+        	}
+        }
 
         repaint();
     }

@@ -16,7 +16,10 @@ public class Cell implements Drawable{
         this.y = y;
         this.cellSize = size;
     }
+    
+    public void LiveorDie(boolean isAlive) {
 
+    }
     /*
      * 10. Complete the liveOrDie method
      *     It sets isAlive to true or false based on the neighbors and 
