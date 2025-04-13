@@ -15,6 +15,7 @@ public class Cell implements Drawable{
         this.x = x;
         this.y = y;
         this.cellSize = size;
+        
     }
     
     public void LiveorDie(boolean isAlive) {
@@ -39,7 +40,24 @@ public class Cell implements Drawable{
      * (source: Wikipedia) 
      */
     public void liveOrDie(int numNeighbors) {
-
+      
+        		if(isAlive = true) {
+        			if(numNeighbors< 2) {
+        				isAlive = false;
+        			}
+        			if(numNeighbors>3) {
+        				isAlive = true;
+        			}
+        			
+        		}
+        		if(isAlive = false) {
+        			if(numNeighbors==3) {
+        				isAlive=true;
+        			}
+        			else {
+        				isAlive = false;
+        			}
+        		}
     }
 
     public int getX() {
