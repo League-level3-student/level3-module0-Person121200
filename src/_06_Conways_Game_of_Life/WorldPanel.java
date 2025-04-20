@@ -104,13 +104,15 @@ public class WorldPanel extends JPanel implements MouseListener, ActionListener 
         int[][] livingNeighbors = new int[cellsPerRow][cellsPerRow];
         for(int i = 0; i<cells.length; i++) {
         	for(int j = 0; j<cells[i].length; j++) {
-        		getLivingNeighbors(cells, i, j);
+        		int livingNeighbor = getLivingNeighbors(cells, i, j);
+        		 livingNeighbors[i][j] = livingNeighbor;
         	}
         }
 
         // 8. check if each cell should live or die
         for(int i = 0; i<cells.length; i++) {
         	for(int j = 0; j<cells[i].length; j++) {
+        		
         		cells[i][j].liveOrDie(livingNeighbors[i][j]);
         	}
         }

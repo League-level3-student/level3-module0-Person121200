@@ -41,16 +41,16 @@ public class Cell implements Drawable{
      */
     public void liveOrDie(int numNeighbors) {
       
-        		if(isAlive = true) {
+        		if(isAlive == true) {
         			if(numNeighbors< 2) {
         				isAlive = false;
         			}
         			if(numNeighbors>3) {
-        				isAlive = true;
+        				isAlive = false;
         			}
         			
         		}
-        		if(isAlive = false) {
+        		else {
         			if(numNeighbors==3) {
         				isAlive=true;
         			}
@@ -58,6 +58,7 @@ public class Cell implements Drawable{
         				isAlive = false;
         			}
         		}
+        		
     }
 
     public int getX() {
