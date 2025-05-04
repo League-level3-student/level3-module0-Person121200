@@ -53,8 +53,10 @@ import java.util.List;
 public class TheWrongWayCow {
 
 	public static int[] findWrongWayCow(final char[][] field) {
-		int[] cow = new int[2];
+		int cow = 0;
 		int[] results = new int[5];
+		int[] coordinates = new int[2];
+
 		
 
 		// Fill in the code to return the [col, row] coordinate position of the
@@ -62,29 +64,55 @@ public class TheWrongWayCow {
 		for (int i = 0; i < field.length; i++) {
 			for (int j = 0; j < field[i].length; j++) {
 					results[isACow(field, i, j)]++;
+					
 			}
 			}
-		return null;
+		for(int i = 0; i<results.length; i++) {
+			if(results[i] == 1) {
+				cow = i;
+			}
 		}
+		for(int i = 0; i< field.length; i++) {
+			for(int j = 0; j<field[i].length; j++) {
+				if(isACow(field, i, j) == cow) {
+					coordinates[0] = j;
+					coordinates[1] = i;
+				}
+			}
+		}
+		return coordinates;
+
+		}
+
+
 
 	
-
 	public static int isACow(char[][] field, int row, int col) {
-		if (field[row][col] == 'c' && field[row + 1][col] == 'o' && field[row + 2][col] == 'w') {
-			return 1;
+		if(row+2<field.length) {
+			if (field[row][col] == 'c' && field[row + 1][col] == 'o' && field[row + 2][col] == 'w') {
+				return 1;
+			}
 		}
-		if (field[row][col] == 'c' && field[row - 1][col] == 'o' && field[row - 2][col] == 'w') {
-			return 2;
+		if(row-2>=0) {
+			if (field[row][col] == 'c' && field[row - 1][col] == 'o' && field[row - 2][col] == 'w') {
+				return 2;
+			}
 		}
-		if (field[row][col] == 'c' && field[row][col + 1] == 'o' && field[row][col + 2] == 'w') {
-			return 3;
+		if(col+2<field[0].length) {
+			if (field[row][col] == 'c' && field[row][col + 1] == 'o' && field[row][col + 2] == 'w') {
+				return 3;
+			}
 		}
-		if (field[row][col] == 'c' && field[row][col - 1] == 'o' && field[row][col - 2] == 'w') {
-			return 4;
+		if(col-2>=0) {
+			if (field[row][col] == 'c' && field[row][col - 1] == 'o' && field[row][col - 2] == 'w') {
+				return 4;
+			}
 		}
 
-		return 1;
+
+		return 0;
 
 	}
+
 
 }
